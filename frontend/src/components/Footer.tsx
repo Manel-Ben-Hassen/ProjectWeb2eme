@@ -27,14 +27,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#programs" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/programs" className="text-gray-400 hover:text-white transition-colors">
                   Programs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#trainers" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/trainers" className="text-gray-400 hover:text-white transition-colors">
                   Trainers
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -47,9 +47,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </a>
+                  <a href="mailto:HomeFit@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                    Contact Us
+                  </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -79,19 +79,7 @@ const Footer = () => {
                 <Youtube className="h-6 w-6" />
               </a>
             </div>
-            <div className="mt-4">
-              <h5 className="text-sm font-semibold mb-2">Subscribe to our newsletter</h5>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="px-4 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                <button className="px-4 py-2 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 transition-colors">
-                  Subscribe
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">

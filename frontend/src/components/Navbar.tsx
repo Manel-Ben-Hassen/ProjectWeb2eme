@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
-import logo from '../assets/3159df52-6743-49ea-b548-51c67d5eb5e7.jpg';
+import logo from '../assets/PersonalTrainerFitnessLogo.png';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode';
-import 'react-toastify/dist/ReactToastify.css'; // Import default styles
+import {jwtDecode} from 'jwt-decode'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import { ToastContainer, toast } from 'react-toastify';
 
 const Navbar = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
   const location = useLocation();
   const [user, setUser] = useState(null);
 
-  // Fetch user profile based on token
+  
   const fetchUserProfile = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -21,8 +21,8 @@ const Navbar = () => {
         return;
       }
 
-      // Decode the token to extract user ID
-      const decodedToken = jwtDecode(token); // Assuming the token contains { id, name, email }
+      
+      const decodedToken = jwtDecode(token); 
       const userId = decodedToken.id;
 
       const response = await axios.get(`http://localhost:5000/api/auth/profile/${userId}`, {
@@ -44,17 +44,17 @@ const Navbar = () => {
       await axios.post("http://localhost:5000/api/auth/logout");
       localStorage.removeItem("token");
       setUser(null);
-        navigate('/auth');
+      navigate('/auth');
     } catch (error) {
       console.error("Logout failed:", error);
       toast.error("Logout failed! Please try again.");
     }
   };
 
-  // Re-fetch user profile on component mount and whenever the token changes
+  
   useEffect(() => {
     fetchUserProfile();
-  }, [localStorage.getItem('token')]); // Trigger whenever the token changes
+  }, [localStorage.getItem('token')]); 
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-sm fixed w-full z-50 transition-colors">
@@ -76,6 +76,36 @@ const Navbar = () => {
               }`}
             >
               Home
+            </Link>
+            <Link 
+              to="/recipes" 
+              className={`${
+                location.pathname === '/recipes' 
+                  ? 'text-indigo-600 dark:text-indigo-400' 
+                  : 'text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400'
+              }`}
+            >
+              Recipes
+            </Link>
+            <Link 
+              to="/programs" 
+              className={`${
+                location.pathname === '/programs' 
+                  ? 'text-indigo-600 dark:text-indigo-400' 
+                  : 'text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400'
+              }`}
+            >
+              Programs
+            </Link>
+            <Link 
+              to="/trainers" 
+              className={`${
+                location.pathname === '/trainers' 
+                  ? 'text-indigo-600 dark:text-indigo-400' 
+                  : 'text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400'
+              }`}
+            >
+              Trainers
             </Link>
             <ThemeToggle />
             {user ? (
